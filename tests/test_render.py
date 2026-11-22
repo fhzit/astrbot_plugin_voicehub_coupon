@@ -51,6 +51,11 @@ def payload() -> dict:
                     "delivery_mode": "voicehub",
                 }
             ],
+            "buyer": {
+                "username": "buyer01",
+                "display_name": "下单同学",
+                "email": "buyer01@example.com",
+            },
             "afdian": None,
         },
         "coupons": [
@@ -163,6 +168,7 @@ def test_reply_contains_order_summary():
     assert "【订单查询结果】" in text
     assert "命中方式：商城订单号" in text
     assert "订单号：20261122153000001234" in text
+    assert "下单人：buyer01（下单同学） · 邮箱：buyer01@example.com" in text
     assert "来源：商城" in text
     assert "支付：已支付" in text
     assert "订单：有效" in text

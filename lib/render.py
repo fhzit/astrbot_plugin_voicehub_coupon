@@ -406,6 +406,18 @@ def render_reply(
     if order_no:
         lines.append(f"订单号：{order_no}")
 
+    buyer = _as_mapping(order.get("buyer"))
+    buyer_name = _clean(buyer.get("username"), 64)
+    buyer_display = _clean(buyer.get("display_name"), 64)
+    buyer_email = _clean(buyer.get("email"), 128)
+    if buyer_name or buyer_email:
+        label = buyer_name or EMPTY
+        if buyer_display and buyer_display != buyer_name:
+            label = f"{label}（{buyer_display}）" if buyer_name else buyer_display
+        if buyer_email:
+            label = f"{label} · 邮箱：{buyer_email}"
+        lines.append(f"下单人：{label}")
+
     summary = [
         ("来源", _status(ORDER_SOURCE, order.get("source") or body.get("source"))),
         ("支付", _status(PAYMENT_STATUS, order.get("payment_status"))),
