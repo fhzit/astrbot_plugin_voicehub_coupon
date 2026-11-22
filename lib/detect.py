@@ -14,7 +14,7 @@ CANDIDATE_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{5,127}")
 # 指令参数也走同一长度上限：站点券码/订单号最长 128 字符。
 MIN_LENGTH = 8
 MAX_LENGTH = 128
-MIN_QUERY_LENGTH = 1
+MIN_QUERY_LENGTH = 6
 
 
 def looks_like_coupon_query(text: Any) -> bool:
