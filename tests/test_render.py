@@ -231,6 +231,15 @@ def test_unpaid_order_shows_reservation_expiry():
     assert "过期：2026-11-22 16:00:00" in text
 
 
+def test_manual_completed_status_is_localized():
+    body = payload()
+    body["order"]["fulfillment_status"] = "manual_completed"
+    body["coupons"][0]["unit_status"] = "manual_completed"
+    text = render_reply(body, {CODE: used_card()})
+    assert "发货：已完成" in text
+    assert "发货已完成" in text
+
+
 def test_reply_reports_card_not_found():
     text = render_reply(payload(), {CODE: {"state": "not_found"}})
     assert TEXT_CARD_NOT_FOUND in text

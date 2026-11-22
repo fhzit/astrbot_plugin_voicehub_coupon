@@ -66,6 +66,7 @@ FULFILLMENT_STATUS = {
     "processing": "发货中",
     "partial": "部分发货",
     "failed": "发货失败",
+    "manual_completed": "已完成",
     "none": "未发货",
 }
 
@@ -74,6 +75,7 @@ UNIT_STATUS = {
     "pending": "处理中",
     "processing": "处理中",
     "failed": "失败",
+    "manual_completed": "已完成",
     "skipped": "已跳过",
     "none": "未发货",
 }
