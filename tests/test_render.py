@@ -215,6 +215,22 @@ def test_card_code_status_labels(status, label):
     assert f"站点：{label}" in text
 
 
+def test_paid_order_does_not_show_reservation_expiry():
+    body = payload()
+    body["order"]["expires_at"] = "2026-11-22T08:00:00.000Z"
+    text = render_reply(body, {CODE: used_card()})
+    assert "过期" not in text
+
+
+def test_unpaid_order_shows_reservation_expiry():
+    body = payload()
+    body["order"]["payment_status"] = "unpaid"
+    body["order"]["paid_at"] = None
+    body["order"]["expires_at"] = "2026-11-22T08:00:00.000Z"
+    text = render_reply(body, {CODE: used_card()})
+    assert "过期：2026-11-22 16:00:00" in text
+
+
 def test_reply_reports_card_not_found():
     text = render_reply(payload(), {CODE: {"state": "not_found"}})
     assert TEXT_CARD_NOT_FOUND in text

@@ -424,12 +424,16 @@ def render_reply(
     if money:
         lines.append(" · ".join(money))
 
+    payment_status = _clean(order.get("payment_status"), 20)
     for label, value in (
         ("下单", to_beijing(order.get("created_at"))),
         ("支付", to_beijing(order.get("paid_at"))),
         ("发货", to_beijing(order.get("fulfilled_at"))),
         ("过期", to_beijing(order.get("expires_at"))),
     ):
+        # 已支付订单的 expires_at 只是下单时的保留期限，再显示会被误读成订单过期。
+        if label == "过期" and payment_status == "paid":
+            continue
         if value != EMPTY:
             lines.append(f"{label}：{value}")
 
