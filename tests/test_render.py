@@ -196,6 +196,25 @@ def test_reply_merges_voicehub_coupon_status_and_redeem_details():
     assert CODE not in text
 
 
+@pytest.mark.parametrize(
+    "status, label",
+    [
+        ("AVAILABLE", "未使用"),
+        ("ASSIGNED", "已派发"),
+        ("LOCKED", "使用中"),
+        ("REDEEMED", "已核销"),
+        ("INVALID", "已作废"),
+    ],
+)
+def test_card_code_status_labels(status, label):
+    """CardCode.status 枚举必须全部有中文，未映射会直接把英文贴进群。"""
+    card = used_card()
+    card["data"]["status"] = status
+    card["data"]["assignment"]["status"] = status
+    text = render_reply(payload(), {CODE: card})
+    assert f"站点：{label}" in text
+
+
 def test_reply_reports_card_not_found():
     text = render_reply(payload(), {CODE: {"state": "not_found"}})
     assert TEXT_CARD_NOT_FOUND in text

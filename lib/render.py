@@ -78,10 +78,13 @@ UNIT_STATUS = {
     "none": "未发货",
 }
 
-# 券状态与派发记录状态（assignment.status）共用一套枚举。
+# 券状态（CardCode.status）与派发记录状态（assignment.status）共用一套映射。
 COUPON_STATUS = {
     "AVAILABLE": "未使用",
     "ASSIGNED": "已派发",
+    "LOCKED": "使用中",
+    "REDEEMED": "已核销",
+    "INVALID": "已作废",
     "USED": "已核销",
     "RECYCLED": "已回收",
     "FAILED": "派发失败",
