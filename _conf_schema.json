@@ -1,0 +1,62 @@
+{
+  "voicehubpay_base_url": {
+    "description": "VoiceHubPay 站点地址",
+    "type": "string",
+    "default": "",
+    "hint": "例如 https://pay.example.com，不要带末尾斜杠。留空或缺少机器人令牌时，/查券 与 /查单 只回复配置提示。"
+  },
+  "voicehubpay_bot_token": {
+    "description": "VoiceHubPay 机器人令牌（BOT_QUERY_TOKEN）",
+    "type": "string",
+    "default": "",
+    "hint": "VoiceHubPay 服务端环境变量 BOT_QUERY_TOKEN 的值；未设置时接口返回 BOT_QUERY_DISABLED。该令牌等同于查询凭证，不要发到群里。"
+  },
+  "voicehub_base_url": {
+    "description": "VoiceHub 站点地址（可选）",
+    "type": "string",
+    "default": "",
+    "hint": "例如 https://voicehub.example.com。用于按券码查询站点券状态；留空时订单与发货状态仍会回复，券状态位置显示「未配置 VoiceHub API Key，无法查询站点券状态」。"
+  },
+  "voicehub_api_key": {
+    "description": "VoiceHub API Key（可选）",
+    "type": "string",
+    "default": "",
+    "hint": "在 VoiceHub 后台创建的 API Key，必须勾选 card-codes:read 权限（点歌券只读）。只填地址不填 Key 同样按未配置降级。"
+  },
+  "group_ids": {
+    "description": "授权群号白名单",
+    "type": "text",
+    "default": "",
+    "hint": "QQ 群号或群 openid，逗号或换行分隔，例如 123456789,987654321。只有这里的群可以使用指令与被动识别；URL/会话串等非法内容会被忽略并在启动日志中提示。留空表示不授权任何群。"
+  },
+  "auto_query": {
+    "description": "群内自动识别订单号/券码",
+    "type": "bool",
+    "default": true,
+    "hint": "开启后，白名单群里单行发送订单号或券码（8-128 位、含数字，纯数字至少 16 位）会自动查询；只有查到结果才回复并接管该消息，查不到则静默放行。关闭后只能用指令查询。"
+  },
+  "allow_private": {
+    "description": "允许私聊查询",
+    "type": "bool",
+    "default": false,
+    "hint": "默认关闭，私聊使用指令会回复「请在已授权的群聊中使用」。开启后私聊也可查询，此时不受群号白名单限制。"
+  },
+  "show_full_code": {
+    "description": "回复中显示完整券码",
+    "type": "bool",
+    "default": false,
+    "hint": "默认掩码（保留首 4 位与末 2 位）。开启后回复明文券码，方便用户复制核销；群聊场景建议保持关闭。"
+  },
+  "request_timeout_seconds": {
+    "description": "查询超时（秒）",
+    "type": "int",
+    "default": 10,
+    "hint": "单次请求 VoiceHubPay / VoiceHub 的超时，允许 1-60 秒，默认 10 秒。"
+  },
+  "max_coupons": {
+    "description": "单次展示券数上限",
+    "type": "int",
+    "default": 10,
+    "hint": "一笔订单可能有多张券，回复只展示前 N 张并提示剩余数量；允许 1-20，默认 10。"
+  }
+}

@@ -1,0 +1,11 @@
+name: astrbot_plugin_voicehub_coupon
+display_name: VoiceHub 点歌券查询
+desc: 在白名单 QQ 群内按 VoiceHubPay 订单号、爱发电订单号或点歌券码查询订单与点歌券状态。
+short_desc: 群内自助查询点歌券订单与核销状态。
+version: v0.1.0
+author: fhzit
+repo: https://github.com/fhzit/astrbot_plugin_voicehub_coupon
+support_platforms:
+  - aiocqhttp
+  - qq_official
+  - qq_official_webhook
