@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import inspect
 import logging
 import types
 
@@ -307,3 +308,15 @@ def test_initialize_logs_missing_settings_and_bad_groups(plugin, caplog):
     assert any("voicehubpay_base_url" in message for message in messages)
     assert any("voicehub_api_key" in message for message in messages)
     assert any("bad:group" in message for message in messages)
+
+
+def test_commands_use_greedy_str_without_default(plugin):
+    """AstrBot 只在参数没有默认值时才认 GreedyStr；带默认值会永远读到空串。"""
+    from astrbot.core.star.filter.command import GreedyStr
+
+    for name in ("coupon_query", "order_query"):
+        parameter = inspect.signature(
+            getattr(plugin.VoiceHubCouponPlugin, name), eval_str=True
+        ).parameters["query"]
+        assert parameter.default is inspect.Parameter.empty, name
+        assert parameter.annotation is GreedyStr, name

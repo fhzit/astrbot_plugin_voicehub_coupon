@@ -121,12 +121,12 @@ class VoiceHubCouponPlugin(Star):
         return outcome.text or TEXT_QUERY_FAILED
 
     @filter.command("查券", alias={"coupon", "cq"})
-    async def coupon_query(self, event: AstrMessageEvent, query: GreedyStr = ""):
+    async def coupon_query(self, event: AstrMessageEvent, query: GreedyStr):
         """查询订单与点歌券状态：/查券 <订单号或点歌券码>"""
         yield event.plain_result(await self._handle_command(event, query))
 
     @filter.command("查单", alias={"order", "dd"})
-    async def order_query(self, event: AstrMessageEvent, query: GreedyStr = ""):
+    async def order_query(self, event: AstrMessageEvent, query: GreedyStr):
         """按订单号查询：/查单 <商城订单号 / 爱发电订单号>"""
         yield event.plain_result(await self._handle_command(event, query))
 
