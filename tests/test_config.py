@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from astrbot_plugin_voicehub_coupon.lib.config import (
+from astrbot_plugin_voicehubpay.lib.config import (
     DEFAULT_MAX_COUPONS,
     DEFAULT_TIMEOUT,
     MAX_COUPONS_LIMIT,

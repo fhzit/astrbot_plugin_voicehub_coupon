@@ -6,14 +6,14 @@ import copy
 
 import pytest
 
-from astrbot_plugin_voicehub_coupon.lib.render import (
+from astrbot_plugin_voicehubpay.lib.render import (
     format_cents,
     mask_code,
     render_card_only,
     render_reply,
     to_beijing,
 )
-from astrbot_plugin_voicehub_coupon.lib.texts import (
+from astrbot_plugin_voicehubpay.lib.texts import (
     TEXT_CARD_DISABLED,
     TEXT_CARD_ERROR,
     TEXT_CARD_NOT_FOUND,

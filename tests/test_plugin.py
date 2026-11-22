@@ -8,8 +8,8 @@ import types
 
 import pytest
 
-from astrbot_plugin_voicehub_coupon.lib.service import Outcome
-from astrbot_plugin_voicehub_coupon.lib.texts import (
+from astrbot_plugin_voicehubpay.lib.service import Outcome
+from astrbot_plugin_voicehubpay.lib.texts import (
     TEXT_CARD_DISABLED,
     TEXT_GROUP_DENIED,
     TEXT_NOT_FOUND,
@@ -17,8 +17,8 @@ from astrbot_plugin_voicehub_coupon.lib.texts import (
     TEXT_PRIVATE_DENIED,
     TEXT_USAGE,
 )
-from astrbot_plugin_voicehub_coupon.lib.voicehub import CardStatus
-from astrbot_plugin_voicehub_coupon.lib.voicehubpay import QueryResult
+from astrbot_plugin_voicehubpay.lib.voicehub import CardStatus
+from astrbot_plugin_voicehubpay.lib.voicehubpay import QueryResult
 
 from support import FakeEvent, collect, run
 

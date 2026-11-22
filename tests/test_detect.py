@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from astrbot_plugin_voicehub_coupon.lib.detect import looks_like_coupon_query, normalize_query
+from astrbot_plugin_voicehubpay.lib.detect import looks_like_coupon_query, normalize_query
 
 
 @pytest.mark.parametrize(

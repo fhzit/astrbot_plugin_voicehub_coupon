@@ -88,4 +88,4 @@ _install_astrbot_stubs()
 @pytest.fixture(scope="session")
 def plugin():
     """加载插件主模块，供各测试模块共用。"""
-    return importlib.import_module("astrbot_plugin_voicehub_coupon.main")
+    return importlib.import_module("astrbot_plugin_voicehubpay.main")

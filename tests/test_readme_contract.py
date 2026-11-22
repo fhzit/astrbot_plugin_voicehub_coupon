@@ -11,9 +11,9 @@ import re
 from dataclasses import fields
 from pathlib import Path
 
-from astrbot_plugin_voicehub_coupon.lib.config import CONFIG_KEYS, CouponConfig
-from astrbot_plugin_voicehub_coupon.lib.render import mask_code
-from astrbot_plugin_voicehub_coupon.lib.texts import (
+from astrbot_plugin_voicehubpay.lib.config import CONFIG_KEYS, CouponConfig
+from astrbot_plugin_voicehubpay.lib.render import mask_code
+from astrbot_plugin_voicehubpay.lib.texts import (
     TEXT_CARD_DISABLED,
     TEXT_CARD_NOT_FOUND,
     TEXT_GROUP_DENIED,
@@ -149,11 +149,11 @@ def test_readme_has_the_required_sections():
 
 def test_metadata_contract():
     data = metadata()
-    assert data["name"] == "astrbot_plugin_voicehub_coupon"
-    assert data["display_name"] == "VoiceHub 点歌券查询"
+    assert data["name"] == "astrbot_plugin_voicehubpay"
+    assert data["display_name"] == "VoiceHubPay 点歌券查询"
     assert data["version"] == "v0.1.0"
     assert data["author"] == "fhzit"
-    assert data["repo"] == "https://github.com/fhzit/astrbot_plugin_voicehub_coupon"
+    assert data["repo"] == "https://github.com/fhzit/astrbot_plugin_voicehubpay"
     assert "aiocqhttp" in METADATA.read_text(encoding="utf-8")
 
 

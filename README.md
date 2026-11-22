@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎟️ VoiceHub 点歌券查询
+# 🎟️ VoiceHubPay 点歌券查询
 
 *在 QQ 群里自助查询订单与点歌券状态*
 
@@ -16,7 +16,7 @@
 
 插件只做只读查询：不保存订单，不记录券码，不接触账号身份信息，回复里的券码默认掩码。
 
-- 插件仓库：<https://github.com/fhzit/astrbot_plugin_voicehub_coupon>
+- 插件仓库：<https://github.com/fhzit/astrbot_plugin_voicehubpay>
 - 适配器：`aiocqhttp`（OneBot v11）；`qq_official` / `qq_official_webhook` 亦可使用，实际表现取决于平台的群消息能力。
 - Python 依赖见 [`requirements.txt`](./requirements.txt)，只有 `aiohttp`。
 
@@ -67,7 +67,7 @@ VoiceHub 未配置时插件仍能展示订单与 VoiceHubPay 发货状态，只�
 
 ```sh
 cd AstrBot/data/plugins
-git clone https://github.com/fhzit/astrbot_plugin_voicehub_coupon.git
+git clone https://github.com/fhzit/astrbot_plugin_voicehubpay.git
 ```
 
 也可以用 AstrBot 管理面板的 `插件市场` / `安装插件`（支持仓库地址或上传 zip），然后在面板中重载插件。
@@ -75,12 +75,12 @@ git clone https://github.com/fhzit/astrbot_plugin_voicehub_coupon.git
 依赖会在插件加载时按 `requirements.txt` 安装；也可以手动装：
 
 ```sh
-AstrBot/.venv/bin/pip install -r astrbot_plugin_voicehub_coupon/requirements.txt
+AstrBot/.venv/bin/pip install -r astrbot_plugin_voicehubpay/requirements.txt
 ```
 
 ### 2. 配置插件
 
-在 AstrBot 管理面板 → `插件` → `VoiceHub 点歌券查询` 中填写：
+在 AstrBot 管理面板 → `插件` → `VoiceHubPay 点歌券查询` 中填写：
 
 | 配置项 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |

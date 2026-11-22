@@ -1,6 +1,6 @@
 # 更新日志
 
-本文件记录 astrbot_plugin_voicehub_coupon 的用户可感知变更。格式参照 Keep a Changelog，
+本文件记录 astrbot_plugin_voicehubpay 的用户可感知变更。格式参照 Keep a Changelog，
 版本号递增遵循语义化。
 
 ## [v0.1.0] - 2026-11-22

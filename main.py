@@ -1,4 +1,4 @@
-"""VoiceHub 点歌券查询插件。
+"""VoiceHubPay 点歌券查询插件。
 
 白名单群内的用户可以直接发送 VoiceHubPay 订单号 / 爱发电订单号 / 点歌券码，
 插件静默查询后回复订单与券状态；也可以显式使用 `/查券`、`/查单` 指令。
@@ -52,13 +52,13 @@ class _CouponCandidateFilter(CustomFilter):
 
 
 @register(
-    "astrbot_plugin_voicehub_coupon",
+    "astrbot_plugin_voicehubpay",
     "fhzit",
     "在授权群内按订单号或点歌券码查询 VoiceHubPay 订单与券状态",
     "v0.1.0",
 )
 class VoiceHubCouponPlugin(Star):
-    """VoiceHub 点歌券查询插件。"""
+    """VoiceHubPay 点歌券查询插件。"""
 
     def __init__(self, context: Context, config: Optional[Any] = None):
         super().__init__(context)
@@ -71,23 +71,23 @@ class VoiceHubCouponPlugin(Star):
         missing = self.plugin_config.missing_pay_settings()
         if missing:
             logger.warning(
-                "[VoiceHub券] 未配置 %s，/查券 与 /查单 只会回复配置提示。",
+                "[VoiceHubPay] 未配置 %s，/查券 与 /查单 只会回复配置提示。",
                 "、".join(missing),
             )
         if not self.plugin_config.voicehub_ready:
             logger.info(
-                "[VoiceHub券] 未配置 voicehub_base_url 或 voicehub_api_key："
+                "[VoiceHubPay] 未配置 voicehub_base_url 或 voicehub_api_key："
                 "订单仍可查询，站点券状态显示为「%s」。",
                 TEXT_CARD_DISABLED,
             )
         if not self.plugin_config.group_ids:
             logger.warning(
-                "[VoiceHub券] 群号白名单为空：群内指令与被动识别都不会生效；"
+                "[VoiceHubPay] 群号白名单为空：群内指令与被动识别都不会生效；"
                 "需要私聊查询时请开启 allow_private。"
             )
         else:
             logger.info(
-                "[VoiceHub券] 已授权 %d 个群，被动识别%s。",
+                "[VoiceHubPay] 已授权 %d 个群，被动识别%s。",
                 len(self.plugin_config.group_ids),
                 "已开启" if self.plugin_config.auto_query else "已关闭",
             )
@@ -101,7 +101,7 @@ class VoiceHubCouponPlugin(Star):
                 dropped = []
         if dropped:
             logger.warning(
-                "[VoiceHub券] 以下取值不是合法群号/群 openid，已忽略：%s", dropped
+                "[VoiceHubPay] 以下取值不是合法群号/群 openid，已忽略：%s", dropped
             )
 
     # ------------------------------------------------------------------
